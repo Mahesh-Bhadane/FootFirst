@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "lint:fix": "eslint --fix",
+    "prepare": "husky install",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
@@ -22,12 +26,18 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.12",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "^10.4.14",
-    "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "husky": "^8.0.3",
+    "eslint": "^8.46.0",
+    "lint-staged": "^12.2.0",
     "postcss": "^8.4.27",
+    "prettier": "^2.8.8",
     "tailwindcss": "^3.3.3"
   }
 }
