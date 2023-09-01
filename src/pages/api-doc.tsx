@@ -1,7 +1,16 @@
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { createSwaggerSpec } from "next-swagger-doc";
+import dynamic from "next/dynamic";
+import "swagger-ui-react/swagger-ui.css";
 
-export const getApiDocs = async () => {
-  const spec = createSwaggerSpec({
+const SwaggerUI = dynamic<any>(import("swagger-ui-react"), { ssr: false });
+
+function ApiDoc({ spec }: InferGetStaticPropsType<typeof getStaticProps>) {
+  return <SwaggerUI spec={spec} />;
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const spec: Record<string, any> = createSwaggerSpec({
     definition: {
       openapi: "3.0.0",
       info: {
@@ -11,7 +20,7 @@ export const getApiDocs = async () => {
           "API documentation for the E-commerce app built with Next.js"
       },
       paths: {
-        "/health": {
+        "/api/health": {
           get: {
             tags: ["Health Check"],
             summary: "Health Check",
@@ -911,7 +920,6 @@ export const getApiDocs = async () => {
           }
         }
       },
-
       components: {
         securitySchemes: {
           BearerAuth: {
@@ -921,12 +929,15 @@ export const getApiDocs = async () => {
           }
         }
       },
-      security: [
-        {
-          BearerAuth: []
-        }
-      ]
+      security: []
     }
   });
-  return spec;
+
+  return {
+    props: {
+      spec
+    }
+  };
 };
+
+export default ApiDoc;
