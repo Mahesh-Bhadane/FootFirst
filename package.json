@@ -17,6 +17,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.23.3",
+    "@clerk/themes": "^1.7.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/node": "20.4.5",
     "class-variance-authority": "^0.7.0",
