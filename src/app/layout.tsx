@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AxiomWebVitals } from "next-axiom";
+import { ClerkProvider } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -15,9 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <AxiomWebVitals />
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <AxiomWebVitals />
+        <body className={inter.className}>
+          <main className="container mx-auto">
+            <div className="flex items-start justify-center min-h-screen">
+              <div className="mt-20">
+                <UserButton afterSignOutUrl="/" showName />
+                {children}
+              </div>
+            </div>
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
