@@ -1,13 +1,10 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { SlideShow } from "@/components/molecules/Slideshow";
 
 export default function Home() {
   return (
     <>
+      <SlideShow />
       <h1 className="text-3xl font-bold underline">welcome to next.js</h1>
-      <Button>
-        <Link href="/sign-in">Login</Link>
-      </Button>
     </>
   );
 }
