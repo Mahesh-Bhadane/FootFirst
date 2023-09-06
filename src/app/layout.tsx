@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AxiomWebVitals } from "next-axiom";
 import { ClerkProvider } from "@clerk/nextjs";
-import { UserButton } from "@clerk/nextjs";
+import { NavBar } from "@/components/layouts/Navbar";
+import { Footer } from "@/components/molecules/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -21,14 +22,11 @@ export default function RootLayout({
       <html lang="en">
         <AxiomWebVitals />
         <body className={inter.className}>
-          <main className="container mx-auto">
-            <div className="flex items-start justify-center min-h-screen">
-              <div className="mt-20">
-                <UserButton afterSignOutUrl="/" showName />
-                {children}
-              </div>
-            </div>
+          <NavBar />
+          <main className="container">
+            <div className="mt-20 mb-20">{children}</div>
           </main>
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

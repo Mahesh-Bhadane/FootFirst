@@ -1,8 +1,8 @@
 import { db } from "@/db/db";
-import { stores } from "@/db/schema";
+import { carts } from "@/db/schema";
 
 const Product = async () => {
-  const myStores = await db.select().from(stores);
+  const myStores = await db.select().from(carts);
   console.log(myStores);
   return <div>Product</div>;
 };
