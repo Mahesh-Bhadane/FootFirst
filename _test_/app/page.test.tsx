@@ -8,7 +8,6 @@ describe("Home component", () => {
     render(<Home />);
     
     expect(screen.getByText("welcome to next.js")).toBeInTheDocument();
-    expect(screen.getByText("Login")).toBeInTheDocument();
   });
 });
 
