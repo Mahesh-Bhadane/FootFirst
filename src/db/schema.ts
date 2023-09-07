@@ -15,8 +15,7 @@ export const products = mysqlTable("products", {
   price: decimal("price", { precision: 10, scale: 2 }).default("0"),
   description: text("description"),
   inventory: decimal("inventory").default("0"),
-  images: json("images"),
-  storeId: int("store_id")
+  images: json("images")
 });
 export type Product = InferModel<typeof products>;
 
@@ -31,7 +30,6 @@ export type Cart = InferModel<typeof carts>;
 
 export const payments = mysqlTable("payments", {
   id: serial("id").primaryKey(),
-  storeId: int("store_id"),
   stripeAccountId: text("stripe_account_id"),
   stripeAccountCreatedAt: int("stripe_account_created_at"),
   stripeAccountExpiresAt: int("stripe_account_expires_at"),
