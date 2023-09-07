@@ -3,7 +3,7 @@ import { ImageOff } from "lucide-react";
 import Image from "next/image";
 
 export const ProductImage = (props: {
-  src: string;
+  src: any;
   alt: string;
   sizes?: string;
   imageClassName?: string;
