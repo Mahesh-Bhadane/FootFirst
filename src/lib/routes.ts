@@ -6,7 +6,8 @@ export const routes = {
   product: "/product",
   cart: "/cart",
   checkout: "/checkout",
-  orderConfirmation: "order-confirmation"
+  orderConfirmation: "order-confirmation",
+  productQuickView: "/quickview/product"
 };
 
 export const apiRoutes = {
