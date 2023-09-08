@@ -2,7 +2,6 @@ import { Text } from "../ui/text";
 import { routes } from "@/lib/routes";
 import Link from "next/link";
 import { currencyFormatter } from "@/lib/currency";
-import { Button } from "../ui/button";
 import { ProductImage } from "./Product-image";
 import { Product } from "@/db/schema";
 
@@ -12,11 +11,8 @@ export type ProductAndStore = {
   };
 };
 
-export const ProductCard = (props: {
-  storeAndProduct: ProductAndStore;
-  hideButtonActions?: boolean;
-}) => {
-  const productPageLink = `${routes.product}/${props.storeAndProduct.product.id}`;
+export const ProductCard = (props: { storeAndProduct: ProductAndStore }) => {
+  const productPageLink = `${routes.products}/${props.storeAndProduct.product.id}`;
   return (
     <div key={props.storeAndProduct.product.id} data-testid="product-card">
       <Link href={productPageLink}>
@@ -35,20 +31,6 @@ export const ProductCard = (props: {
           {currencyFormatter(Number(props.storeAndProduct.product.price))}
         </Text>
       </Link>
-      {!props.hideButtonActions && (
-        <div className="flex flex-col sm:flex-row gap-2 items-center justify-between mt-4 mb-8">
-          <Link
-            href={`${routes.productQuickView}/${[
-              props.storeAndProduct.product.id
-            ]}`}
-            className="w-full"
-          >
-            <Button variant="outline" size="sm" className="flex gap-2 w-full">
-              <span>Quick View</span>
-            </Button>
-          </Link>
-        </div>
-      )}
     </div>
   );
 };

@@ -3,11 +3,9 @@ export const routes = {
   signUp: "/auth/sign-up",
   account: "/account",
   products: "/products",
-  product: "/product",
   cart: "/cart",
   checkout: "/checkout",
-  orderConfirmation: "order-confirmation",
-  productQuickView: "/quickview/product"
+  orderConfirmation: "order-confirmation"
 };
 
 export const apiRoutes = {
