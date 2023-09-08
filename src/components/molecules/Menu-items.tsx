@@ -17,33 +17,6 @@ import { routes } from "@/lib/routes";
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Tim's Toys",
-    href: "/",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet."
-  },
-  {
-    title: "James' Jackpots",
-    href: "/",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet."
-  },
-  {
-    title: "Dave's Deals",
-    href: "/",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet."
-  },
-  {
-    title: "Tim's Trainers",
-    href: "/",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet."
-  }
-];
-
 export function MenuItems({ user }: any) {
   return (
     <div className="flex justify-between ">
@@ -86,22 +59,6 @@ export function MenuItems({ user }: any) {
                 <ListItem href={routes.products} title="Summer Sale">
                   Grab a bargain with our summer sale.
                 </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Featured Sellers</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
-                  </ListItem>
-                ))}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
