@@ -27,6 +27,12 @@ export default async function Home() {
     .where(gt(products.inventory, "50"))
     .limit(4);
 
+  const highestInventoryProduct = popularProducts.reduce((prev, current) => {
+    const prevInventory = prev.product?.inventory || 0;
+    const currentInventory = current.product?.inventory || 0;
+    return prevInventory > currentInventory ? prev : current;
+  });
+
   return (
     <div>
       <SlideShow />
@@ -58,13 +64,12 @@ export default async function Home() {
         </div>
         <div className="bg-green-500 text-white w-full p-12 rounded-md mt-12 flex items-center flex-col gap-2 justify-center text-center">
           <p className="uppercase tracking-wide text-sm font-medium">
-            Featured seller
+            Featured product
           </p>
-          <p className="text-3xl font-bold">Tim&apos;s Terrific Toys</p>
-          <p>
-            Top seller of the month! Tim&apos;s Toys has been selling toys for
-            10 years and is a top rated seller on the platform.
+          <p className="text-3xl font-bold">
+            {highestInventoryProduct.product.name}
           </p>
+          <p>{highestInventoryProduct.product.description}</p>
           <Link href={routes.cart} className="mt-6">
             <Button variant="secondary">Explore cart</Button>
           </Link>

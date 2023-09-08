@@ -21,7 +21,6 @@ export const Footer = () => {
               </a>
               .
             </p>
-            <p>Source code available on GitHub.</p>
           </div>
         </div>
       </ContentWrapper>
