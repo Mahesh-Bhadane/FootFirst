@@ -53,7 +53,7 @@ export default async function Home() {
               key={item.product.id}
               //@ts-ignore
               storeAndProduct={item}
-              hideButtonActions={true}
+              hideButtonActions={false}
             />
           ))}
         </div>
