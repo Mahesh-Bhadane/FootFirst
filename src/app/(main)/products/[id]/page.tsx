@@ -5,9 +5,11 @@ import { db } from "@/db/db";
 import { products } from "@/db/schema";
 import { currencyFormatter } from "@/lib/currency";
 import { eq } from "drizzle-orm";
-import Image from "next/image";
 import { FeatureIcons } from "@/components/molecules/feature-icons";
 import { ParagraphFormatter } from "@/components/ui/paragraph-formatter";
+import { ProductImage } from "@/components/molecules/Product-image";
+import { ProductForm } from "@/components/molecules/product-form";
+import { addToCart } from "@/components/server-actions/add-to-cart";
 
 export default async function Product({
   params: { id }
@@ -30,15 +32,12 @@ export default async function Product({
       <div className="flex flex-col gap-8">
         <div className="flex flex-col items-center md:items-start justify-start md:grid md:grid-cols-9 gap-8">
           <div className="col-span-4 w-full">
-            <div className="relative h-56 w-full">
-              <Image
-                //@ts-ignore
-                src={product.images}
-                alt={"product"}
-                fill
-                className="object-cover h-48 w-full"
-              />
-            </div>
+            <ProductImage
+              src={product.images}
+              alt={"product"}
+              height="h-96"
+              width="w-full"
+            />
           </div>
           <div className="md:col-span-5 w-full">
             <Heading size="h2">{product.name}</Heading>
@@ -46,6 +45,12 @@ export default async function Product({
             <Text className="text-xl my-4">
               {currencyFormatter(Number(product.price))}
             </Text>
+            <ProductForm
+              addToCartAction={addToCart}
+              productName={product.name}
+              availableInventory={product.inventory}
+              productId={product.id}
+            />
             <FeatureIcons className="mt-8" />
           </div>
         </div>
