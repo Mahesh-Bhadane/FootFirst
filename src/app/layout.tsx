@@ -5,7 +5,7 @@ import { AxiomWebVitals } from "next-axiom";
 import { ClerkProvider } from "@clerk/nextjs";
 import { NavBar } from "@/components/layouts/Navbar";
 import { Footer } from "@/components/molecules/Footer";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "../components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
