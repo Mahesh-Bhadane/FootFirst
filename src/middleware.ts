@@ -6,9 +6,7 @@ export default authMiddleware({
     "/_axiom/logs",
     "/api/product",
     "/products(.*)",
-    "/cart(.*)",
-    "/product(.*)",
-    "/checkout(.*)"
+    "/cart(.*)"
   ]
 });
 
