@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { routes } from "@/lib/routes";
 import { Loader2, Lock } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -23,7 +24,9 @@ export const CheckoutButton = () => {
       ) : (
         <Lock size={16} />
       )}
-      <p>Checkout</p>
+      <Link href={routes.checkout}>
+        <p>Checkout</p>
+      </Link>
     </Button>
   );
 };
