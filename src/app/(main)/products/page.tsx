@@ -14,7 +14,7 @@ export default async function Products() {
   return (
     <div>
       <ContentWrapper>
-        <div className="flex flex-col items-center justify-center gap-2 text-center mb-12 pt-2">
+        <div className="flex flex-col items-center justify-center gap-2 text-center mb-12">
           <Heading size="h1">Online shopping made easy.</Heading>
           <div className="text-slate-600">
             <Heading size="h2">
