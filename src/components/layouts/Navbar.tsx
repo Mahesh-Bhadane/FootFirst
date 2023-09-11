@@ -14,10 +14,10 @@ import { ShoppingCartHeader } from "@/components/molecules/Shopping-cart-header"
 export const NavBar = async () => {
   const user = await currentUser();
   return (
-    <>
+    <div className={cn("sticky top-0  z-10")}>
       <nav
         className={cn(
-          "pb-1 sticky top-0 bg-white z-10 shadow-sm",
+          "pb-1 sticky top-0 bg-white shadow-sm",
           "border-b border-border"
         )}
       >
@@ -60,6 +60,6 @@ export const NavBar = async () => {
         </ContentWrapper>
       </nav>
       <Line />
-    </>
+    </div>
   );
 };
