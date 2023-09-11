@@ -54,15 +54,14 @@ export async function addToCart(newCartItem: CartItem) {
         .where(eq(carts.id, Number(cartId)));
       revalidatePath("/");
       return;
-    } else {
-      const newCart = await db
-        .insert(carts)
-        .values({ items: JSON.stringify([newCartItem]) });
-      // @ts-ignore
-      cookieStore.set("cartId", String(newCart.insertId));
-      revalidatePath("/");
-      return;
     }
   } else {
+    const newCart = await db
+      .insert(carts)
+      .values({ items: JSON.stringify([newCartItem]) });
+    // @ts-ignore
+    cookieStore.set("cartId", String(newCart.insertId));
+    revalidatePath("/");
+    return;
   }
 }
