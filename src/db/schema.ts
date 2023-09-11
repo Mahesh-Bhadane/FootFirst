@@ -22,18 +22,20 @@ export type Product = InferModel<typeof products>;
 export const carts = mysqlTable("carts", {
   id: serial("id").primaryKey(),
   items: json("items"),
-  paymentIntentId: text("payment_intent_id"),
-  clientSecret: text("client_secret"),
   isClosed: boolean("is_closed").default(false)
 });
 export type Cart = InferModel<typeof carts>;
 
-export const payments = mysqlTable("payments", {
+export const orders = mysqlTable("orders", {
   id: serial("id").primaryKey(),
-  stripeAccountId: text("stripe_account_id"),
-  stripeAccountCreatedAt: int("stripe_account_created_at"),
-  stripeAccountExpiresAt: int("stripe_account_expires_at"),
-  details_submitted: boolean("details_submitted").default(false)
+  name: text("name"),
+  email: text("email"),
+  address: text("address"),
+  city: text("city"),
+  state: text("state"),
+  postal_code: text("postal_code"),
+  country: text("country"),
+  createdAt: int("created_at")
 });
 
-export type Payment = InferModel<typeof payments>;
+export type Order = InferModel<typeof orders>;
