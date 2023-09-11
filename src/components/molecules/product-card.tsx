@@ -31,7 +31,8 @@ export const ProductCard = (props: {
       </Link>
       <Link href={productPageLink}>
         <Text className="line-clamp-1 w-full mt-2">
-          {props.storeAndProduct.product.name}
+          {props?.storeAndProduct?.product?.name?.charAt(0)?.toUpperCase()}
+          {props?.storeAndProduct?.product?.name?.slice(1).toLowerCase()}
         </Text>
         <Text>
           {currencyFormatter(Number(props.storeAndProduct.product.price))}
