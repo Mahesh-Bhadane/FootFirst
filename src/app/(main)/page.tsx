@@ -67,7 +67,8 @@ export default async function Home() {
             Featured product
           </p>
           <p className="text-3xl font-bold">
-            {highestInventoryProduct.product.name}
+            {highestInventoryProduct?.product?.name?.charAt(0)?.toUpperCase()}
+            {highestInventoryProduct?.product?.name?.slice(1).toLowerCase()}
           </p>
           <p>{highestInventoryProduct.product.description}</p>
           <Link href={routes.cart} className="mt-6">
