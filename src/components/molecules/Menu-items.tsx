@@ -39,7 +39,7 @@ export function MenuItems({ user }: any) {
                       className="flex h-full w-full select-none flex-col justify-end rounded-md no-underline outline-none focus:shadow-md bg-sport overflow-hidden"
                       href="/"
                     >
-                      <div className="relative top-0 bg-secondary border border-border w-full h-full p-6 pt-24">
+                      <div className="relative top-0 bg-secondary border border-border w-full h-full p-6 pt-24 cursor-text  ">
                         <div className="mb-2 mt-4 text-lg font-medium text-primary">
                           Here to help
                         </div>
