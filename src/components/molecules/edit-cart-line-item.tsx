@@ -46,7 +46,12 @@ export const EditCartLineItem = (props: {
             <Input
               type="number"
               value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(e) => {
+                const newQuantity = Number(e.target.value);
+                if (newQuantity >= 0) {
+                  setQuantity(newQuantity);
+                }
+              }}
               onBlur={(e) => handleInputQuantity(e, setQuantity, 0)}
             />
           </div>

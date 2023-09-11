@@ -57,7 +57,9 @@ export default async function Product({
         <Tabs defaultValue="product">
           <div className="overflow-auto">
             <TabsList>
-              <TabsTrigger value="product">Product Description</TabsTrigger>
+              <TabsTrigger value="product" className="cursor-text">
+                Product Description
+              </TabsTrigger>
             </TabsList>
           </div>
           <TabsContent value="product" className="pt-2">
