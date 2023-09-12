@@ -5,8 +5,11 @@ import { CheckoutItem } from "@/lib/types";
 import { getCart } from "@/components/server-actions/get-cart-details";
 import CheckoutWrapper from "./components/checkout-wrapper";
 import { CartLineItems } from "@/components/molecules/cart-line-items";
+import { currentUser } from "@clerk/nextjs";
 
 export default async function Checkout() {
+  const user = await currentUser();
+
   const cartId = cookies().get("cartId")?.value;
   const { cartItems, cartItemDetails } = await getCart(Number(cartId));
 
@@ -36,6 +39,7 @@ export default async function Checkout() {
   return (
     <CheckoutWrapper
       detailsOfProductsInCart={detailsOfProductsInCart}
+      user={user}
       cartLineItems={
         <CartLineItems
           variant="checkout"
