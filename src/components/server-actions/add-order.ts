@@ -21,8 +21,9 @@ export async function addOrder(newOrderItems: any) {
     cart_id: Number(cartId)
   };
 
-  const newCart = await db.insert(orders).values(newOrderData);
-  cookieStore.set("cartId", String(newCart.insertId));
+  const order = await db.insert(orders).values(newOrderData);
+  cookieStore.set("orderId", String(order.insertId));
+  cookieStore.delete("cartId");
   revalidatePath("/");
   return;
 }

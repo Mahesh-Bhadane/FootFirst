@@ -6,6 +6,17 @@ export type ProductImages = {
   url: string;
 };
 
+export type FormData = {
+  email: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  postal_code: string;
+  country: string;
+  cashDelivery: boolean;
+};
+
 export type CartItem = { id: number; qty: number };
 
 export type CheckoutItem = {
