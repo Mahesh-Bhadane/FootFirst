@@ -80,7 +80,9 @@ export const CartLineItems = (props: {
                 </>
               ) : (
                 <>
-                  <TableCell>{currentProductInCart?.qty}</TableCell>
+                  <TableCell className="text-right">
+                    {currentProductInCart?.qty}
+                  </TableCell>
                   <TableCell className="text-right">
                     {currencyFormatter(Number(product.price))}
                   </TableCell>
