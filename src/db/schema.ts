@@ -36,6 +36,7 @@ export const orders = mysqlTable("orders", {
   postal_code: text("postal_code"),
   country: text("country"),
   cashDelivery: boolean("cashDelivery"),
+  cart_id: int("cart_id"),
   createdAt: int("created_at")
 });
 
