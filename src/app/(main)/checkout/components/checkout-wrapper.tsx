@@ -10,8 +10,8 @@ import { Heading } from "@/components/ui/heading";
 import { OrderSummaryAccordion } from "./order-summary-accordion";
 import { CheckoutItem } from "@/lib/types";
 import { currencyFormatter } from "@/lib/currency";
-import { TrustBadges } from "./TrustBadges";
-import { OrderTotalRow } from "./OrderTotalRow";
+import { OrderTotalRow } from "./orderTotalRow";
+import { TrustBadges } from "./trustBadges";
 
 export default function CheckoutWrapper(props: {
   detailsOfProductsInCart: CheckoutItem[];
