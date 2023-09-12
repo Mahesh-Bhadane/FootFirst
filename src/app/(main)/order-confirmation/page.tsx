@@ -8,13 +8,13 @@ import React from "react";
 
 const OrderConfirmation = async () => {
   const cookieStore = cookies();
-  const cartId = cookieStore.get("cartId")?.value;
+  const orderId = cookieStore.get("orderId")?.value;
   const orderList = await db
     .select({
       order: orders
     })
     .from(orders)
-    .where(eq(orders.id, Number(cartId)));
+    .where(eq(orders.id, Number(orderId)));
 
   return (
     <div className="mt-8">

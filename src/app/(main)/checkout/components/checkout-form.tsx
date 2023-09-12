@@ -11,24 +11,14 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage
+  FormLabel
 } from "@/components/ui/form";
 import { addOrder } from "@/components/server-actions/add-order";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { routes } from "@/lib/routes";
-
-interface FormData {
-  email: string;
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  postal_code: string;
-  country: string;
-  cashDelivery: boolean;
-}
+import { FormData } from "@/lib/types";
+import { ContactInfoForm } from "./contactInfoForm";
 
 export default function CheckoutForm({ user }: any) {
   const emailId = user?.emailAddresses[0]?.emailAddress;
@@ -81,139 +71,7 @@ export default function CheckoutForm({ user }: any) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-6"
       >
-        <div className="flex flex-col gap-3 bg-secondary border-border border rounded-md md:p-6 p-4 md:pb-7 pb-5">
-          <Heading size="h4">Contact Info</Heading>
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <>
-                <FormItem className="relative">
-                  <FormControl>
-                    <Input
-                      className="rounded-xl pl-6 py-6"
-                      placeholder="Email"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-                <FormMessage />
-              </>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <>
-                <FormItem className="relative">
-                  <FormControl>
-                    <Input
-                      className="rounded-xl pl-6 py-6"
-                      placeholder="Name"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-                <FormMessage />
-              </>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="address"
-            render={({ field }) => (
-              <>
-                <FormItem className="relative">
-                  <FormControl>
-                    <Input
-                      className="rounded-xl pl-6 py-6"
-                      placeholder="Address Line"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-                <FormMessage />
-              </>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="city"
-            render={({ field }) => (
-              <>
-                <FormItem className="relative">
-                  <FormControl>
-                    <Input
-                      className="rounded-xl pl-6 py-6"
-                      placeholder="City"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-                <FormMessage />
-              </>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="state"
-            render={({ field }) => (
-              <>
-                <FormItem className="relative">
-                  <FormControl>
-                    <Input
-                      className="rounded-xl pl-6 py-6"
-                      placeholder="State"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-                <FormMessage />
-              </>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="postal_code"
-            render={({ field }) => (
-              <>
-                <FormItem className="relative">
-                  <FormControl>
-                    <Input
-                      className="rounded-xl pl-6 py-6"
-                      placeholder="Postal Code"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-                <FormMessage />
-              </>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="country"
-            render={({ field }) => (
-              <>
-                <FormItem className="relative">
-                  <FormControl>
-                    <Input
-                      className="rounded-xl pl-6 py-6"
-                      placeholder="Country"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-                <FormMessage />
-              </>
-            )}
-          />
-        </div>
-
+        <ContactInfoForm form={form} />
         <div className="bg-secondary border-border border rounded-md md:p-6 p-6 md:pb-7 pb-5">
           <Heading size="h4">Payment</Heading>
           <FormField
