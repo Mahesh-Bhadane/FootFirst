@@ -16,6 +16,7 @@ import { FeatureIcons } from "@/components/molecules/feature-icons";
 export default function CheckoutWrapper(props: {
   detailsOfProductsInCart: CheckoutItem[];
   cartLineItems: React.ReactNode;
+  user: any;
 }) {
   const orderTotal = useMemo(() => {
     return currencyFormatter(
@@ -25,7 +26,6 @@ export default function CheckoutWrapper(props: {
       )
     );
   }, [props.detailsOfProductsInCart]);
-
   return (
     <div>
       <Heading size="h2">Checkout</Heading>
@@ -46,7 +46,7 @@ export default function CheckoutWrapper(props: {
       <div>
         <div className="lg:grid lg:grid-cols-12 lg:gap-8 mt-4 flex flex-col-reverse gap-6">
           <div className="col-span-7">
-            <CheckoutForm />
+            <CheckoutForm user={props.user} />
           </div>
           <div className="col-span-5">
             <div className="bg-secondary rounded-lg lg:p-6 h-fit border-border border p-1 px-4 lg:mb-8">
