@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/form";
 import { addOrder } from "@/components/server-actions/add-order";
 import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
+import { routes } from "@/lib/routes";
 
 interface FormData {
   email: string;
@@ -49,6 +51,7 @@ export default function CheckoutForm({ user }: any) {
 
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     setIsLoading(true);
@@ -60,6 +63,8 @@ export default function CheckoutForm({ user }: any) {
 
     try {
       await addOrder(orderData);
+      router.replace(routes.orderConfirmation);
+
       form.reset();
       toast({
         title: "Payment succeeded!"
