@@ -7,6 +7,7 @@ import { cookies } from "next/headers";
 
 export async function addOrder(newOrderItems: any) {
   const cookieStore = cookies();
+  const cartId = cookieStore.get("cartId")?.value;
   const newOrderData = {
     name: newOrderItems.name,
     email: newOrderItems.email,
@@ -16,7 +17,8 @@ export async function addOrder(newOrderItems: any) {
     postal_code: newOrderItems.postal_code,
     country: newOrderItems.country,
     cashDelivery: newOrderItems.cashDelivery,
-    createdAt: newOrderItems.createdAt
+    createdAt: newOrderItems.createdAt,
+    cart_id: Number(cartId)
   };
 
   const newCart = await db.insert(orders).values(newOrderData);

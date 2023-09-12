@@ -14,19 +14,19 @@ export const CheckoutButton = () => {
   const router = useRouter();
 
   return (
-    <Button
-      className="flex items-center gap-2 justify-center"
-      onClick={() => {}}
-      disabled={isLoading}
-    >
-      {isLoading ? (
-        <Loader2 size={16} className="animate-spin" />
-      ) : (
-        <Lock size={16} />
-      )}
-      <Link href={routes.checkout}>
+    <Link href={routes.checkout}>
+      <Button
+        className="flex items-center w-full gap-2 justify-center"
+        onClick={() => {}}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <Loader2 size={16} className="animate-spin" />
+        ) : (
+          <Lock size={16} />
+        )}
         <p>Checkout</p>
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   );
 };
