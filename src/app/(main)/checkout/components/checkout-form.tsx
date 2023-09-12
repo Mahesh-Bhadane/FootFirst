@@ -14,13 +14,16 @@ import {
   FormLabel,
   FormMessage
 } from "@/components/ui/form";
+import { addOrder } from "@/components/server-actions/add-order";
+import { useToast } from "@/components/ui/use-toast";
 
 interface FormData {
   email: string;
+  name: string;
   address: string;
   city: string;
   state: string;
-  postalCode: string;
+  postal_code: string;
   country: string;
   cashDelivery: boolean;
 }
@@ -28,42 +31,56 @@ interface FormData {
 export default function CheckoutForm({ user }: any) {
   const emailId = user?.emailAddresses[0]?.emailAddress;
 
+  const initialFormData: FormData = {
+    email: emailId || "",
+    name: "",
+    address: "",
+    city: "",
+    state: "",
+    postal_code: "",
+    country: "",
+    cashDelivery: true
+  };
+
   const form = useForm<FormData>({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
+    defaultValues: initialFormData
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const { toast } = useToast();
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     setIsLoading(true);
-    console.log(data);
-    setIsLoading(false);
-    setMessage("Payment succeeded!");
-    form.reset();
-  };
+    const createdAtTimestamp = Math.floor(Date.now() / 1000);
+    const orderData = {
+      ...data,
+      createdAt: createdAtTimestamp
+    };
 
+    try {
+      await addOrder(orderData);
+      form.reset();
+      toast({
+        title: "Payment succeeded!"
+      });
+    } catch (error) {
+      console.error("Error adding order:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-6"
       >
-        {message && (
-          <div
-            id="payment-message"
-            className="bg-green-100 border border-green-600 text-green-800 rounded-md p-2 flex items-center justify-start gap-2"
-          >
-            <p>{message}</p>
-          </div>
-        )}
-
         <div className="flex flex-col gap-3 bg-secondary border-border border rounded-md md:p-6 p-4 md:pb-7 pb-5">
           <Heading size="h4">Contact Info</Heading>
           <FormField
             control={form.control}
             name="email"
-            defaultValue={emailId || ""}
             render={({ field }) => (
               <>
                 <FormItem className="relative">
@@ -79,7 +96,24 @@ export default function CheckoutForm({ user }: any) {
               </>
             )}
           />
-
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <>
+                <FormItem className="relative">
+                  <FormControl>
+                    <Input
+                      className="rounded-xl pl-6 py-6"
+                      placeholder="Name"
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+                <FormMessage />
+              </>
+            )}
+          />
           <FormField
             control={form.control}
             name="address"
@@ -139,7 +173,7 @@ export default function CheckoutForm({ user }: any) {
 
           <FormField
             control={form.control}
-            name="postalCode"
+            name="postal_code"
             render={({ field }) => (
               <>
                 <FormItem className="relative">
@@ -194,7 +228,6 @@ export default function CheckoutForm({ user }: any) {
                   </FormControl>
                   <FormLabel>Cash On Delivery</FormLabel>
                 </FormItem>
-                <FormMessage />
               </>
             )}
           />
