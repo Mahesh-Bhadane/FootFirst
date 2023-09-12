@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import CheckoutForm from "./checkout-form";
 import { ChevronRight } from "lucide-react";
-import { StarSVG } from "@/components/icons/star";
 import { routes } from "@/lib/routes";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -11,14 +10,15 @@ import { Heading } from "@/components/ui/heading";
 import { OrderSummaryAccordion } from "./order-summary-accordion";
 import { CheckoutItem } from "@/lib/types";
 import { currencyFormatter } from "@/lib/currency";
-import { FeatureIcons } from "@/components/molecules/feature-icons";
+import { TrustBadges } from "./TrustBadges";
+import { OrderTotalRow } from "./OrderTotalRow";
 
 export default function CheckoutWrapper(props: {
   detailsOfProductsInCart: CheckoutItem[];
   cartLineItems: React.ReactNode;
   user: any;
 }) {
-  const orderTotal = useMemo(() => {
+  const subtotal = useMemo(() => {
     return currencyFormatter(
       props.detailsOfProductsInCart!.reduce(
         (acc, item) => acc + item.price * item.qty,
@@ -26,6 +26,20 @@ export default function CheckoutWrapper(props: {
       )
     );
   }, [props.detailsOfProductsInCart]);
+
+  const discount = useMemo(() => {
+    const subtotalValue = parseFloat(subtotal.replace(/[^0-9.-]+/g, ""));
+    const discountValue = subtotalValue * 0.1;
+    return currencyFormatter(discountValue);
+  }, [subtotal]);
+
+  const orderTotal = useMemo(() => {
+    const subtotalValue = parseFloat(subtotal.replace(/[^0-9.-]+/g, ""));
+    const discountValue = parseFloat(discount.replace(/[^0-9.-]+/g, ""));
+    const total = subtotalValue - discountValue;
+    return currencyFormatter(total);
+  }, [subtotal, discount]);
+
   return (
     <div>
       <Heading size="h2">Checkout</Heading>
@@ -53,14 +67,22 @@ export default function CheckoutWrapper(props: {
               <div className="hidden lg:flex flex-col gap-2">
                 <Heading size="h4">Order Summary</Heading>
                 {props.cartLineItems}
-                <OrderTotalRow total={orderTotal} />
+                <OrderTotalRow
+                  subtotal={subtotal}
+                  discount={discount}
+                  total={orderTotal}
+                />
               </div>
               <OrderSummaryAccordion
                 title="Order Summary"
                 className="lg:hidden"
               >
                 {props.cartLineItems}
-                <OrderTotalRow total={orderTotal} />
+                <OrderTotalRow
+                  subtotal={subtotal}
+                  discount={discount}
+                  total={orderTotal}
+                />
               </OrderSummaryAccordion>
             </div>
             <div className="lg:hidden bg-secondary border border-border p-5 pt-8 mt-8 rounded-md">
@@ -75,32 +97,3 @@ export default function CheckoutWrapper(props: {
     </div>
   );
 }
-
-const TrustBadges = () => {
-  return (
-    <div className="flex items-center justify-center flex-col gap-6">
-      <div className="flex flex-col gap-2 items-center justify-center">
-        <p className="text-lg font-semibold text-center">
-          Hundreds of happy customers worldwide
-        </p>
-        <div className="flex items-center justify-center gap-1">
-          {Array.from(Array(5)).map((_, i) => (
-            <div className="max-w-2" key={i}>
-              <StarSVG />
-            </div>
-          ))}
-        </div>
-      </div>
-      <FeatureIcons />
-    </div>
-  );
-};
-
-const OrderTotalRow = (props: { total: string }) => {
-  return (
-    <div className="flex items-center justify-between p-4 py-2 border-y border-slate-200">
-      <Heading size="h4">Total</Heading>
-      <p className="text-lg font-semibold">{props.total}</p>
-    </div>
-  );
-};
