@@ -63,6 +63,7 @@ export default function CheckoutForm({ user }: any) {
       console.error("Error adding order:", error);
     } finally {
       setIsLoading(false);
+      router.refresh();
     }
   };
   return (
