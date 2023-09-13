@@ -10,6 +10,7 @@ import { Line } from "@/components/molecules/Line";
 import { MenuItems } from "@/components/molecules/Menu-items";
 import { MobileNavigation } from "@/components/molecules/Mobile-navigation";
 import { ShoppingCartHeader } from "@/components/molecules/Shopping-cart-header";
+import logo from "@/components/icons/FootFirst-logos_black.png";
 
 export const NavBar = async () => {
   const user = await currentUser();
@@ -23,7 +24,7 @@ export const NavBar = async () => {
       >
         <ContentWrapper className="flex justify-between items-center md:hidden flex-wrap gap-4">
           <Link href="/">
-            <Image src={"./logo.svg"} alt={"logo"} width={150} height={150} />
+            <Image src={logo} alt={"logo"} width={200} height={100} />
           </Link>
           <div className="ml-auto flex items-center gap-8">
             <ShoppingCartHeader />
