@@ -1,15 +1,31 @@
+/* eslint-disable no-unused-vars */
 import { Heading } from "@/components/ui/heading";
 import { db } from "@/db/db";
 import { products } from "@/db/schema";
 import { ContentWrapper } from "@/components/molecules/Content-wrapper";
-import { ProductCard } from "@/components/molecules/product-card";
+import {
+  ProductAndStore,
+  ProductCard
+} from "@/components/molecules/product-card";
+import { CollectionPagePagination } from "./components/collection-page-pagination";
 
-export default async function Products() {
-  const productsList = await db
+const PRODUCTS_PER_PAGE = 8;
+
+export default async function Products(context: {
+  params: { slug: string };
+  searchParams: { page: string; seller: string };
+}) {
+  const productsList = (await db
     .select({
       product: products
     })
-    .from(products);
+    .from(products)
+    .limit(PRODUCTS_PER_PAGE)
+    .offset(
+      !isNaN(Number(context.searchParams.page))
+        ? (Number(context.searchParams.page) - 1) * PRODUCTS_PER_PAGE
+        : 0
+    )) as ProductAndStore[];
 
   return (
     <div>
@@ -34,6 +50,10 @@ export default async function Products() {
             />
           ))}
         </div>
+        <CollectionPagePagination
+          productsPerPage={PRODUCTS_PER_PAGE}
+          sellerParams={context.searchParams.seller as string}
+        />
       </ContentWrapper>
     </div>
   );
