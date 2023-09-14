@@ -1,13 +1,13 @@
 import { ContentWrapper } from "@/components/molecules/Content-wrapper";
-import { Logo } from "@/components/molecules/Logo";
+import Image from "next/image";
+import logo from "@/components/icons/FootFirst-logos_white.png";
 
 export const Footer = () => {
   return (
     <footer className="p-6 text-primary-foreground bg-primary pb-12">
       <ContentWrapper className="flex items-start md:items-end justify-start md:justify-between gap-2 flex-col md:flex-row">
         <div>
-          <Logo />
-          <p>Online shopping made easy</p>
+          <Image src={logo} alt={"logo"} width={300} height={50} />
         </div>
         <div className="flex gap-2 items-center justify-start md:justify-end">
           <div className="flex items-start md:items-end justify-center flex-col gap-1 text-secondary text-sm">

@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 import { AxiomWebVitals } from "next-axiom";
 import { ClerkProvider } from "@clerk/nextjs";
 import { NavBar } from "@/components/layouts/Navbar";
-import { Footer } from "@/components/molecules/Footer";
 import { Toaster } from "@/components/ui/Toaster";
+import { Footer } from "@/components/layouts/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
