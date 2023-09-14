@@ -7,7 +7,7 @@ import Link from "next/link";
 import { DollarSign, Phone, Truck } from "lucide-react";
 import { SlideShow } from "@/components/molecules/Slideshow";
 import { ContentWrapper } from "@/components/molecules/Content-wrapper";
-import { ProductCard } from "@/components/molecules/product-card";
+import { ProductCard } from "@/components/molecules/Product-card";
 import { FeatureBanner } from "@/components/molecules/Feature-banner";
 import { gt } from "drizzle-orm";
 

@@ -19,7 +19,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { routes } from "@/lib/routes";
 import { FormData } from "@/lib/types";
-import { ContactInfoForm } from "./contactInfoForm";
+import { ContactInfoForm } from "@/app/(main)/checkout/components/contactInfoForm";
 
 export default function CheckoutForm({ user }: any) {
   const emailId = user?.emailAddresses[0]?.emailAddress;

@@ -11,8 +11,8 @@ import { routes } from "@/lib/routes";
 import { CartItem, CartLineItemDetails } from "@/lib/types";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { EditCartLineItem } from "./edit-cart-line-item";
 import { ProductImage } from "./Product-image";
+import { EditCartLineItem } from "./Edit-cart-line-item";
 
 export const CartLineItems = (props: {
   cartItems: CartItem[];

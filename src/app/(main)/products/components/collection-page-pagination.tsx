@@ -1,6 +1,6 @@
 import { db } from "@/db/db";
 import { products } from "@/db/schema";
-import { PaginationRow } from "./pagination-row";
+import { PaginationRow } from "@/app/(main)/products/components/pagination-row";
 
 export const CollectionPagePagination = async (props: {
   productsPerPage: number;

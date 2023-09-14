@@ -3,8 +3,8 @@ import { db } from "@/db/db";
 import { products } from "@/db/schema";
 import { CheckoutItem } from "@/lib/types";
 import { getCart } from "@/components/server-actions/get-cart-details";
-import CheckoutWrapper from "./components/checkout-wrapper";
-import { CartLineItems } from "@/components/molecules/cart-line-items";
+import CheckoutWrapper from "@/app/(main)/checkout/components/checkout-wrapper";
+import { CartLineItems } from "@/components/molecules/Cart-line-items";
 import { currentUser } from "@clerk/nextjs";
 
 export default async function Checkout() {

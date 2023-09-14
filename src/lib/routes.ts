@@ -9,6 +9,5 @@ export const routes = {
 };
 
 export const apiRoutes = {
-  store: "/api/store",
   product: "/api/product"
 };

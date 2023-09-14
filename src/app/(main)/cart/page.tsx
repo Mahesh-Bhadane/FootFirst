@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { CartLineItems } from "@/components/molecules/cart-line-items";
+import { CartLineItems } from "@/components/molecules/Cart-line-items";
 import { getCart } from "@/components/server-actions/get-cart-details";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
@@ -8,7 +8,7 @@ import { routes } from "@/lib/routes";
 import { ChevronRight } from "lucide-react";
 import { cookies } from "next/headers";
 import Link from "next/link";
-import { CheckoutButton } from "./components/checkout-button";
+import { CheckoutButton } from "@/app/(main)/cart/components/checkout-button";
 
 export default async function Cart() {
   const cartId = cookies().get("cartId")?.value;

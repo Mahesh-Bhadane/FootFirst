@@ -6,7 +6,7 @@ import { ContentWrapper } from "@/components/molecules/Content-wrapper";
 import {
   ProductAndStore,
   ProductCard
-} from "@/components/molecules/product-card";
+} from "@/components/molecules/Product-card";
 import { CollectionPagePagination } from "./components/collection-page-pagination";
 
 const PRODUCTS_PER_PAGE = 8;

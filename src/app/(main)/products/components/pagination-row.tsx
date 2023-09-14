@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { PaginationButton } from "./pagination-button";
+import { PaginationButton } from "@/app/(main)/products/components/pagination-button";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 

@@ -5,7 +5,7 @@ import { currencyFormatter } from "@/lib/currency";
 import { ProductImage } from "./Product-image";
 import { Product } from "@/db/schema";
 import { Button } from "../ui/button";
-import { ProductForm } from "./product-form";
+import { ProductForm } from "./Product-form";
 import { addToCart } from "../server-actions/add-to-cart";
 
 export type ProductAndStore = {

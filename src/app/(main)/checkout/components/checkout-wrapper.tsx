@@ -1,17 +1,17 @@
 "use client";
 
 import { useMemo } from "react";
-import CheckoutForm from "./checkout-form";
+import CheckoutForm from "@/app/(main)/checkout/components/checkout-form";
 import { ChevronRight } from "lucide-react";
 import { routes } from "@/lib/routes";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
-import { OrderSummaryAccordion } from "./order-summary-accordion";
+import { OrderSummaryAccordion } from "@/app/(main)/checkout/components/order-summary-accordion";
 import { CheckoutItem } from "@/lib/types";
 import { currencyFormatter } from "@/lib/currency";
-import { OrderTotalRow } from "./orderTotalRow";
-import { TrustBadges } from "./trustBadges";
+import { OrderTotalRow } from "@/app/(main)/checkout/components/orderTotalRow";
+import { TrustBadges } from "@/app/(main)/checkout/components/trustBadges";
 
 export default function CheckoutWrapper(props: {
   detailsOfProductsInCart: CheckoutItem[];
