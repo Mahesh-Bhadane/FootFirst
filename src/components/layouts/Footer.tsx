@@ -1,4 +1,4 @@
-import { ContentWrapper } from "@/components/molecules/Content-wrapper";
+import { ContentWrapper } from "@/components/molecules/ContentWrapper";
 import Image from "next/image";
 import logo from "@/components/icons/FootFirst-logos_white.png";
 

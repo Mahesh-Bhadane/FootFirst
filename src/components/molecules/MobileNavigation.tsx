@@ -10,7 +10,7 @@ import {
   SheetTitle,
   SheetTrigger
 } from "@/components/ui/sheet";
-import { ProductImage } from "@/components/molecules/Product-image";
+import { ProductImage } from "@/components/molecules/ProductImage";
 import { images } from "@/lib/assets";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";

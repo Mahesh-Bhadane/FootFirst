@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
 import { Heading } from "@/components/ui/heading";
 import { db } from "@/db/db";
 import { products } from "@/db/schema";
-import { ContentWrapper } from "@/components/molecules/Content-wrapper";
+import { ContentWrapper } from "@/components/molecules/ContentWrapper";
 import {
   ProductAndStore,
   ProductCard
-} from "@/components/molecules/Product-card";
+} from "@/components/molecules/ProductCard";
 import { CollectionPagePagination } from "./components/collection-page-pagination";
 
 const PRODUCTS_PER_PAGE = 8;

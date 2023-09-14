@@ -5,10 +5,10 @@ import { db } from "@/db/db";
 import { products } from "@/db/schema";
 import { currencyFormatter } from "@/lib/currency";
 import { eq } from "drizzle-orm";
-import { FeatureIcons } from "@/components/molecules/Feature-icons";
+import { FeatureIcons } from "@/components/molecules/FeatureIcons";
 import { ParagraphFormatter } from "@/components/ui/paragraph-formatter";
-import { ProductImage } from "@/components/molecules/Product-image";
-import { ProductForm } from "@/components/molecules/Product-form";
+import { ProductImage } from "@/components/molecules/ProductImage";
+import { ProductForm } from "@/components/molecules/ProductForm";
 import { addToCart } from "@/components/server-actions/add-to-cart";
 
 export default async function Product({

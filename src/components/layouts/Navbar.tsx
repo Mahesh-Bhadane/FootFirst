@@ -3,13 +3,13 @@ import { Truck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { currentUser } from "@clerk/nextjs";
-import { ContentWrapper } from "@/components/molecules/Content-wrapper";
+import { ContentWrapper } from "@/components/molecules/ContentWrapper";
 import { Logo } from "@/components/molecules/Logo";
-import { IconWithText } from "@/components/molecules/Icon-with-text";
+import { IconWithText } from "@/components/molecules/IconWithText";
 import { Line } from "@/components/molecules/Line";
-import { MenuItems } from "@/components/molecules/Menu-items";
-import { MobileNavigation } from "@/components/molecules/Mobile-navigation";
-import { ShoppingCartHeader } from "@/components/molecules/Shopping-cart-header";
+import { MenuItems } from "@/components/molecules/MenuItems";
+import { MobileNavigation } from "@/components/molecules/MobileNavigation";
+import { ShoppingCartHeader } from "@/components/molecules/ShoppingCartHeader";
 import logo from "@/components/icons/FootFirst-logos_black.png";
 
 export const NavBar = async () => {

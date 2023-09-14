@@ -1,4 +1,4 @@
-import { ContentWrapper } from "@/components/molecules/Content-wrapper";
+import { ContentWrapper } from "@/components/molecules/ContentWrapper";
 import { LoadingSkeleton } from "@/components/ui/loading-skeleton";
 
 export default function Loading() {

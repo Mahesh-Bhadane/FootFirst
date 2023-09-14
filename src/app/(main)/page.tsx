@@ -6,9 +6,9 @@ import { routes } from "@/lib/routes";
 import Link from "next/link";
 import { DollarSign, Phone, Truck } from "lucide-react";
 import { SlideShow } from "@/components/molecules/Slideshow";
-import { ContentWrapper } from "@/components/molecules/Content-wrapper";
-import { ProductCard } from "@/components/molecules/Product-card";
-import { FeatureBanner } from "@/components/molecules/Feature-banner";
+import { ContentWrapper } from "@/components/molecules/ContentWrapper";
+import { ProductCard } from "@/components/molecules/ProductCard";
+import { FeatureBanner } from "@/components/molecules/FeatureBanner";
 import { gt } from "drizzle-orm";
 
 export default async function Home() {

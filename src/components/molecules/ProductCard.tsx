@@ -2,10 +2,10 @@ import { Text } from "../ui/text";
 import { routes } from "@/lib/routes";
 import Link from "next/link";
 import { currencyFormatter } from "@/lib/currency";
-import { ProductImage } from "./Product-image";
+import { ProductImage } from "./ProductImage";
 import { Product } from "@/db/schema";
 import { Button } from "../ui/button";
-import { ProductForm } from "./Product-form";
+import { ProductForm } from "./ProductForm";
 import { addToCart } from "../server-actions/add-to-cart";
 
 export type ProductAndStore = {

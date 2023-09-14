@@ -1,5 +1,5 @@
 import { StarSVG } from "@/components/icons/star";
-import { FeatureIcons } from "@/components/molecules/Feature-icons";
+import { FeatureIcons } from "@/components/molecules/FeatureIcons";
 
 export const TrustBadges = () => {
   return (
