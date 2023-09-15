@@ -9,7 +9,7 @@ import { SlideShow } from "@/components/molecules/Slideshow";
 import { ContentWrapper } from "@/components/molecules/ContentWrapper";
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { FeatureBanner } from "@/components/molecules/FeatureBanner";
-import { gt } from "drizzle-orm";
+import { desc, gt } from "drizzle-orm";
 
 export default async function Home() {
   const productsList = await db
@@ -25,6 +25,7 @@ export default async function Home() {
     })
     .from(products)
     .where(gt(products.inventory, "50"))
+    .orderBy(desc(products.visitedProduct))
     .limit(4);
 
   const highestInventoryProduct = popularProducts.reduce((prev, current) => {
