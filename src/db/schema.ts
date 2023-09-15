@@ -15,7 +15,8 @@ export const products = mysqlTable("products", {
   price: decimal("price", { precision: 10, scale: 2 }).default("0"),
   description: text("description"),
   inventory: decimal("inventory").default("0"),
-  images: json("images")
+  images: json("images"),
+  visitedProduct: int("visitedProduct")
 });
 export type Product = InferModel<typeof products>;
 

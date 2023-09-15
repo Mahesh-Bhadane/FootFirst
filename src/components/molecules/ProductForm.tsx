@@ -43,7 +43,7 @@ export const ProductForm = (props: {
               value={quantity}
               onChange={(e) => {
                 const newQuantity = Number(e.target.value);
-                if (newQuantity >= 0) {
+                if (newQuantity > 0) {
                   setQuantity(newQuantity);
                 }
               }}

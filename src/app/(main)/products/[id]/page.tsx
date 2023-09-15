@@ -28,6 +28,11 @@ export default async function Product({
       throw new Error("Product not found");
     }
 
+    await db
+      .update(products)
+      .set({ visitedProduct: product?.visitedProduct! + 1 })
+      .where(eq(products.id, Number(id)));
+
     return (
       <div className="flex flex-col gap-8">
         <div className="flex flex-col items-center md:items-start justify-start md:grid md:grid-cols-9 gap-8">
